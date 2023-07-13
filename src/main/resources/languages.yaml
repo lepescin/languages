@@ -1,0 +1,58 @@
+openapi: 3.0.3
+info:
+  title: Title
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    LanguageCreateRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        rating:
+          type: integer
+    LanguageUpdateRequest:
+      type: object
+      properties:
+        description:
+          type: string
+        rating:
+          type: integer
+    LanguageSaveResponse:
+      allOf:
+        - $ref: '#/components/schemas/StateResponse'
+        - type: object
+          properties:
+            body:
+              $ref: '#/components/schemas/Language'
+    LanguageGetResponse:
+      type: object
+      properties:
+        language:
+          $ref: '#/components/schemas/Language'
+    StateResponse:
+      type: object
+      properties:
+        state:
+          type: string
+          default: "Ok"
+    ErrorResponse:
+      type: object
+      properties:
+        state:
+          type: string
+          default: "Error"
+        errorMessage:
+          type: string
+    Language:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        rating:
+          type: integer
